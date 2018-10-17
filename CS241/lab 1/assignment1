@@ -1,0 +1,145 @@
+problem 1 list files in reverse order         ls -r
+
+problem 2  remove multiple files  		    rm *.txt *.doc  		echo 'hello' >> a.txt adds at the end of file while echo 'hello' > a.txt removes all previous and adds hello
+
+problem 3  output multiple files with one command        cat example*.txt
+
+problem 4  if talking about hello in file name use       cp *hello* ./IITG/
+
+problem 4  if talking about hello inside the file use   cp `grep -l "hello" examples*.txt` /home/arpit/CS_241/IITG
+
+problem 5  list all files not ending with z andd a    ls --ignore="*a" --ignore="*z"      ls --ignore="*[a,z]" 	correct answer ls --ignore="*[a,z]" --ignore="*[A-Z]"
+
+problem 6  space occupied by current directory along with all its sub directories        du -h  directory name
+
+problem 7  count the number of lines in all files of particuar format       wc -l *.c
+
+Q.8 
+
+	part1=  go in the root by sudo su
+		
+		groupadd <groupname>(group1)
+		useradd -d /home/abhishek(directory will be made by me) -g group1 -m <username>(abhishek)
+		passwd abhishek(to set the password)
+
+	part2= to record home directly
+		make a file file1.txt
+		cat /etc/passwd| grep abhishek>>file1.txt (home directly will be written in abhishek)
+		id abhishek>>file1.txt( to store id and group)
+
+	part3= useradd -d /home/abhishek/second_home_user -g group1 -m rishi(and previously do the follow up commands)
+
+	part4= just use the follow up commands
+		to record, ls -al | cat>>record.txt
+
+Q.9
+
+	part1= usermod -l <newname> <oldname>
+	part2= groupmod -n <newname> <oldname>
+	part3= usermod -d <newDir>(oldDir will be overwritten) -m <username>(the name of user whose id you wanna change)
+	part4= cat /etc/passwd file open...
+		
+		cse:x:1001:1001:Priyanshu:/home/cse:/bin/bash (this /bin/bash is shell)
+
+		usermod -s /home/nologin <username>(sakshi)
+
+Q.10
+
+	part1= userdel sakshi
+	part2= userdel -r rishi(deletes even directory)
+	part3= groupdel <groupname>
+
+Q.11 cat /var/log/syslog --> to see syslog
+	
+	cat /var/log/auth.log --> to see login details(failed password attempt will result in authentication failure)
+
+
+Q.12 part1-->  tar -tf <filename>.tar
+		to create a tar file use tar -cvf a.tar filename(you want to convert to tar)
+
+     part2-->  split the file using   split -b 10K(or any file size you want) filename "name you want(let it be gu)"
+	       then to join these parts cat gu*> <filename>(let it be lecture 1).tar( it will again join these split files in a new tar)
+	       tar -xvf <filename>(ex:lecture1.tar) -C <directory>(/home/cse) --> extract in a specific directory
+
+Q.14 
+
+	part 1:	
+
+	PARTED:
+		go into root
+		lsblk--> see all the partitions(including pen drive)
+		umount /dev/sdbx - unmount each partition of pendrive individually(if 3 partiton umount 3 times)
+		go and see in lsblk -- mountpoint will be gone in /dev/sdbx
+		
+		type parted(it's a application for doing partition)
+		by default it will be /dev/sda
+		select /dev/sdb --> to change into drive(the pen drive drive)
+		do print(it will partition table)
+		mklabel/mktable--> partition table and partition is gone
+		mkpart--> make new partition table, fat32 or ext2
+		table type is gpt(aka gupta)
+		
+		resizepart--> only end will change
+		rm --> remove partiton
+		unit--> select the unit in which u wanna show the partition size
+		if after resizepart we put end at some negative no--> we get completely to the end
+		
+
+	FDISK(hard drive partiton making tool):
+
+		each sector made is of 1/2 kb, tell the start sector, and tell the end sector
+		no resize option is present
+		Until and unless you write in fdsik(by command w),there will be no changes in drive
+
+	MKFS(make file system/ format job):
+		
+		mkfs.vfat(vfat is format type|| ntfs is another) /dev/sdbx(format each partition individually)
+
+	
+Q.15 
+	PART1:
+	dd if=(space mat de idhar)<address>(ex: /home/cse/Desktop/<filename>.iso) of=<address of sdb>(ex: /dev/sdb)
+	if here is input, of being output
+
+	PART2:
+	replace if with of
+	dd if=/dev/sdcx of=/home/cse/Desktop/aspgu.iso
+
+	PART3:
+
+	DO ALL THIS IN ROOT
+
+	mkdir /media/iso(go to media by cd .., then again see ls)	
+	ToMount--->	mount -o loop <location where media iso is(part2 mein jo of tha)>(ex:/home/cse/Desktop/arpgu.iso) /media/iso
+
+	UnMOunt--->     umount /media/iso/ (do it from home,,, like after wherever u are, do cd and then do this)
+
+Q.16
+	command to make softlink -->
+	to see arrow use ls -al
+
+	ln -s <address of folder to create softlink>(ex: /home/cse/Desktop/CS110 <filename>(ex: newname)
+	ln -s a c	creates a softlink c to a 
+
+questions for bonus marks
+install testdisk then delete a partition then sudo testdisk ->> create ->>automatic selection ->>analyse ->>......
+use photorec
+
+
+
+
+
+
+
+
+fdisk does not support gpt type table
+in fdisk we need to use w whereas in parted in does automatically
+
+first go parted /dev/sdb1
+problem 14 part 1			first convert loop to gpt	mklabel	
+					to partition			mkpart ->primary ext2 start end
+	part 2				to create multiple partitions   fdisk /dev/sdb1 --> n-> number-->start and end
+	
+	part 3				use 				resizepart 
+	part 4 				to remove using parted use 	rm
+					to remove using fdisk use	d then number

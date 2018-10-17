@@ -1,0 +1,73 @@
+to config git 
+1.for proxy  git config --global http.proxy http://arpit170101012:pass@202.141.80.24:3128
+2.git config --global user.email "email.com"
+3.git config --global user.name "arpit-iitg"
+
+git config --list to view all config settings
+
+to set up ssh key
+1.ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+2.eval "$(ssh-agent -s)"
+3.ssh-add ~/.ssh/id_rsa
+4.sudo apt-get install xclip
+5.xclip -sel clip < ~/.ssh/id_rsa.pub
+6.go github account-->settings-->add ssh key
+
+to get into others computer 
+1.ssh username@172.16.115.49
+2.logout to exit the connection
+3.ssh -X 172.16.115.49 to get into gui of other and do other stuff
+4.arp -a gives information about running systems
+
+
+
+git add .   --> add all the changes to git i.e. let git know we made changes
+after git add use git commit -m "mwssage" to commit the changes
+git log -->allows us to view history of commits
+git log --author="arpit"  -->to view commits only by author arpit
+
+working copy > staging area >  repository
+###working copy is in your laptop 
+###after using git add file goes to staging area and after commiting file goes to repo
+##after making changes to first file use git add filename  then git commit -m ""
+
+to detect  changes in the file i.e.between working area and repo use git diff
+##red is for the present in the repo whereas green is for the working area
+git diff --staged gives differences between staging area and working copy
+to delete files git rm filename removes file from repo and also working area
+##after this commit is also must
+renaming file is also same as deleting a file and then making a file
+
+##to rename a file from terminal use git mv filename newfilename
+##to move to new folder git mv filename folder/
+
+to directy commit to repo without using git add use git commit -am ""  use with care as it takes everything 
+to checkout a file from working area as a working copy use git checkout -- filename it does not work if we added the file to staging area
+
+to unstage file use git reset HEAD filename and then checkout
+
+getting old versions from repo first > second > third > second   use git checkout code(given in git log) -- filename 
+
+with git we can work on our own computer whereas with github we make public projects
+
+git clone copies the existing git repo
+
+PROBLEM 1: login to another computer using ssh user@ip  -->make new directory -->make hello.cpp -->git add .  -->git commit -m ""
+
+PROBLEM 2: git clone git+ssh://user@ip(from where you want the repo)/~/where you have that file you want to clone to this computer
+
+PROBLEM 3: perform git status on remote machine
+
+PROBLEM 4: g++ hello.cpp using local in remote then git status
+
+PROBLEM 5: make changes to hello.cpp using nano in remote and then use git status
+
+PROBLEM 6:unstage using git reset HEAD filename  then make changes then git status
+
+PROBLEM 7: git commit -am ""    -->logout from remote goto local then use git clone git+ssh://user@ip/~/file path    -->  the files in local are staged not commited  so you need to commit it 
+
+PROBLEM 8: git diff --staged
+
+PROBLEM 9: 
+
+

@@ -1,0 +1,2 @@
+Starting program: /home/arpit/Desktop/CS_241/Cone 
+[Inferior 1 (process 31931) exited normally]
