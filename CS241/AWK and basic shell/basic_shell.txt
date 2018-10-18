@@ -1,0 +1,48 @@
+$which bash   where bash is located
+bash script always starts with "#! /bin/bash" (quotes not inclded) to tell the location of shell we are using
+for comments use # in the beginning of line  or even after finishing the line of code
+user defined and system defined both variables can be used by starting with $ sign
+variable declaration names are same as c++
+for multiline comment use 
+    : '         (space important between : and ')
+        comment
+        comment
+        comment
+    '
+
+to read use read variable_name1 variable_name2
+if you want in same line to take input use read -p 'text' variable_name
+use read -sp to read passwords i.e. to make input as silent
+read -a to take an array as an input
+    then use ${a[0]} to access the element of array
+
+to read arguments use $0 $1 ..  $0 in ./hello.sh  to so on 
+$@ gives all the arguments $# gives number of arguments
+if we use args=$@ takes args[0] as john not ./hello.sh
+
+if [condition]
+then
+    statements
+fi
+            
+if using [] use -eq -gt and so on else if using < ... use (( )) for numbers
+for strings [] works with == ... 
+
+if comparing variables with strings use [[]]
+
+
+case expression in
+    pattern1 )
+        statements ;;
+    pattern2 )
+        statements ;;
+    ....
+esac
+
+\c makes the cursor remail on same line after echo also use echo -e
+
+inside if -e if file exists or not -f for regular file -d for directory -s if file is empty -b for block file -c for character file
+for permissions use -r -w -x
+
+
+
