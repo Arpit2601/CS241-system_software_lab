@@ -1,0 +1,83 @@
+AWK
+    main syntax --> awk options 'selection_criteria {action }' input-file > output-file
+    -f program-file : Reads the AWK program source from the file 
+                    program-file, instead of from the 
+                    first command line argument.
+    -F fs           : Use fs for the input field separator
+    $awk '{print}' filename   by default awk prints every line of data
+    $ awk '/pattern/{print}' filename     prints all the lines which have patterns in them
+    If the line has 4 words, it will be stored in $1, $2, $3 and $4 respectively.
+    Also, $0 represents the whole line. 
+    $ awk '{print $1,$4}' filename   prints column 1 and 4 of all the lines
+    NR: NR command keeps a current count of the number of input records. Remember that records are usually lines.
+        Awk command performs the pattern/action statements once for each record in a file.
+    $ awk '{print NR,$0}' filename will print all the lines with their serial number in the beginning
+    NF: NF command keeps a count of the number of fields within the current input record.
+    $ awk '{print $1,$NF}' filename print 1st and last field of every line
+    $ awk 'NR==3, NR==6 {print NR,$0}' employee.txt display lines from 3 to 6
+    FS is used as field separator  by default white space or tab
+    $ awk 'NF > 0' geeksforgeeks.txt  to print any non empty line in file
+    $ awk '{ if (length($0) > max) max = length($0) } END { print max }' geeksforgeeks.txt
+        to get max length of any line
+    $ awk 'END { print NR }' geeksforgeeks.txt to count the lines int he file
+    $ awk '{ if($3 == "B6") print $0;}' geeksforgeeks.txt  to check for string in any column
+    $ awk 'BEGIN { for(i=1;i<=6;i++) print "square of", i, "is",i*i; }'  to print squares form 1 to 6
+    When the BEGIN pattern is used in a script, all the actions for BEGIN are executed once before any input line is read.
+    When all input lines have been read and dealt with, in case you specify the END pattern, the action(s) will be executed.
+    awk '
+            BEGIN{actions}
+            /patterns/{actions}
+            ...
+            END{actions}' filename
+
+            BEGIN{actions}
+            processing statements
+            END{actions}
+
+            BEGIN and END actions are performed only once while processing statements before every line
+
+AWK QUESTIONS
+    1.awk 'BEGIN{i=0}{i++;}END{print i}' sample.txt
+        semicolons are not necessary
+
+    2.awk '{if($2=="515042969") print $3}' sample.txt 
+      awk '{if($2=="515042969"){i+=$3}}END {print i}' sample.txt   to get sum of all these values
+      DOUBT  something else also had to be done
+    
+    3. awk '{if($2=="515042969"){i+=$3*$10}}END {print i}' sample.txt   product all the tasks with sidc usage
+
+    4.awk '{if($11==1) print $0}' sample.txt
+      
+
+    5.awk '{if($8>0.001 && $8<0.009) print $0}' sample.txt 
+      awk '{if($8>=0.001&&$8<=0.009) count++;print $0} END {print count}' sample.txt
+		- It will print all these lines as well
+
+    6. awk '{if(length($0)>max){max=length($0)}}END {print max}' sample.txt 
+
+    7.awk 'NR==100,NR==200 {print NR,$2,$8,$9,$10}' sample.txt 
+
+    8.awk '{if($7<=0)print > "sample1.txt";else print > "sample0.txt"}' sample.txt  
+        should work but not working 
+
+    9.awk 'NR%100==1{x="file"++i}{print > x}' sample.txt 
+         awk -F, '{{if(NR%100==1) {x="file"++i".txt";print>x} else {print>x}}' sample.txt
+
+    10.first make a file some values in it eg i made the serial numbers filie using 
+        awk '{print NR}' sample.txt > file.txt
+       then to add the two files use 
+       awk '{getline f1 < "file.txt";print f1,$0}' sample.txt > sample_file.txt
+       awk '{$1=++i ; print}' sample.txt >> a.txt
+       
+    11.awk '{for(i=NF;i>0;i--){printf $i" "};printf "\n"}' sample.txt 
+    The "printf()" (formatted print) function is much more flexible
+
+    12.awk '{if(max<length($0)){max=length($0);i=$1;}}END{print i}' sample.txt 
+
+    13.DOUBT
+
+    14.awk 'BEGIN{a[7]=0;a[0]=0;a[1]=0;a[2]=0;a[3]=0;a[4]=0;a[5]=0;a[6]=0}{if($1=="Monday"){a[0]++;}else if($1=="Tuesday"){a[1]++;}
+    else if($1=="Wednesday"){a[2]++;}else if($1=="Thursday"){a[3]++;}else if($1=="Friday"){a[4]++;}else if($1=="Saturday"){a[5]++;}
+    else if($1=="Sunday"){a[6]++;}}END{print a[0],a[1],a[2],a[3],a[4],a[5],a[6]}' days.txt 
+
+    15.awk '{print $0}' lines.txt | sort -k1
