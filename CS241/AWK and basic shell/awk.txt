@@ -3,7 +3,7 @@ AWK
     -f program-file : Reads the AWK program source from the file 
                     program-file, instead of from the 
                     first command line argument.
-    -F fs           : Use fs for the input field separator
+    -F fs           : Use fs for the input field separator (by default field separator is white spacec but you can make it : or any other character)
     $awk '{print}' filename   by default awk prints every line of data
     $ awk '/pattern/{print}' filename     prints all the lines which have patterns in them
     If the line has 4 words, it will be stored in $1, $2, $3 and $4 respectively.
