@@ -75,6 +75,7 @@ AWK QUESTIONS
     12.awk '{if(max<length($0)){max=length($0);i=$1;}}END{print i}' sample.txt 
 
     13.DOUBT
+    awk '{for(i=NF;i>=1;i--) printf "%s ", $i;printf "\n"}' sample.txt 
 
     14.awk 'BEGIN{a[7]=0;a[0]=0;a[1]=0;a[2]=0;a[3]=0;a[4]=0;a[5]=0;a[6]=0}{if($1=="Monday"){a[0]++;}else if($1=="Tuesday"){a[1]++;}
     else if($1=="Wednesday"){a[2]++;}else if($1=="Thursday"){a[3]++;}else if($1=="Friday"){a[4]++;}else if($1=="Saturday"){a[5]++;}
