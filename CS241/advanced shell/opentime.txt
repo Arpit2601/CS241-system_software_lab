@@ -1,0 +1,2 @@
+Nov  6 00:01:20 arpit-Inspiron-5567 systemd: pam_unix(systemd-user:session): session opened for user mcmhod20 by (uid=0)
+Nov  6 00:08:47 arpit-Inspiron-5567 systemd: pam_unix(systemd-user:session): session opened for user mcmhod20 by (uid=0)

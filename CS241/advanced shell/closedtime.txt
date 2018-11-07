@@ -1,0 +1,2 @@
+Nov  6 00:03:18 arpit-Inspiron-5567 systemd: pam_unix(systemd-user:session): session closed for user mcmhod20
+Nov  6 00:09:12 arpit-Inspiron-5567 systemd: pam_unix(systemd-user:session): session closed for user mcmhod20
