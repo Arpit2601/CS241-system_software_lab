@@ -10,4 +10,4 @@ do
     let COUNTER1=COUNTER1+2
 done
 mv out*.pdf multiple_pdf
-mv multiple_pdf home/success
+mv multiple_pdf home/arpit/success/
