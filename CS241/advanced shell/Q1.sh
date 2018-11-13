@@ -7,11 +7,12 @@ do
     MEMORY=$(free -m | awk 'NR==2{printf "\t\t%.2f%%\t\t", $3*100/$2 }')
     # DISK=$(df -h | awk '$NF=="/"{printf "%s\t\t", $5}')
     DISK=$(df -h | awk '{if($6=="/"){printf "%s\t\t",$5}}')
-    CPU=$(top -bn1 | grep load | awk '{printf "%.2f%%\t\t\n", $(NF-2)}')
+    CPU=$(top -bn1 | grep load | awk '{printf "%.2f%%\t\t\n", $(NF-2)}')#uptime can also be used
     echo "$COUNTER$MEMORY$DISK$CPU"
     ((COUNTER+=5))
     sleep 5
 done
+#use df --total in DISK part
 #free -m display amount of memory in megabytes
 # -b  :Batch-mode operation
 #             Starts top in Batch mode, which could be useful for sending
@@ -33,3 +34,6 @@ done
 # 	df command that displays the amount of disk space available on the file system containing each file name argument.
 # 	df <filename>
 # -tells disk space on the file system that contains this file
+#FOR cpu PART
+#iostat
+#mpstat
