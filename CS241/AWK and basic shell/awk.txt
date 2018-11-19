@@ -70,6 +70,8 @@ AWK QUESTIONS
        awk '{$1=++i ; print}' sample.txt >> a.txt
        
     11.awk '{for(i=NF;i>0;i--){printf $i" "};printf "\n"}' sample.txt 
+    awk '{for(i=1;i<NF/2+NF%2;i++){temp=$i;$i=$(NF-i+1);$(NF-i+1)=temp;}{print $0}}' sample.txt 
+
     The "printf()" (formatted print) function is much more flexible
 
     12.awk '{if(max<length($0)){max=length($0);i=$1;}}END{print i}' sample.txt 
@@ -81,4 +83,9 @@ AWK QUESTIONS
     else if($1=="Wednesday"){a[2]++;}else if($1=="Thursday"){a[3]++;}else if($1=="Friday"){a[4]++;}else if($1=="Saturday"){a[5]++;}
     else if($1=="Sunday"){a[6]++;}}END{print a[0],a[1],a[2],a[3],a[4],a[5],a[6]}' days.txt 
 
+    awk '{a[$0]++} END {for(i in a){print i, a[i]}}' days.txt
+
+
     15.awk '{print $0}' lines.txt | sort -k1
+    awk '{a[$1]=$0}END{for (i in a )print a[i]}' lines.txt 
+

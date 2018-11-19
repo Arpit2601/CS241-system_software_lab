@@ -17,6 +17,6 @@ if [ "$char" = yes ]
 then
     while read  p
     do
-        echo $p > $2
+        echo $p >> $2
     done < $1
 fi

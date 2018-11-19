@@ -14,3 +14,5 @@ echo $sum
 }
 word_count
 #why is last echo not printing correct sum why zero
+#use
+awk 'END{print NR}' $1

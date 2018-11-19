@@ -60,6 +60,8 @@ Q.4
 
 	(2) awk 'BEGIN {count=0}{ if($2 ~ 515042969) count+=$3 } END {print count}' sample.txt 
 		OR awk 'BEGIN {count=0}{ if($2==515042969) count+=$3 } END {print count}' sample.txt
+		awk '{if($2==515042969){a[$3]++;if(max<$3){max=$3;}}}END{for(i=0;i<=max;i++){if(a[i]!=0){count++;}}print count}' sample.txt 
+
 
 	(3)  awk 'BEGIN {count=0}{ if($2 ~ 515042969) count+=$3*$10 } END {print count}' sample.txt
 

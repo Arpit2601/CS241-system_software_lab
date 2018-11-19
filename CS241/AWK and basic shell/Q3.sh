@@ -6,19 +6,14 @@ read num1 num2 num3 num4
 sum1=$(($num1+$num2+$num3+$num4))
 echo \"The sum of four numbers\" $sum1
 #part 2
-echo "Please enter two  numbers:"
-read get_num get_num1
-if [[ ! $get_num =~ ^[0-9]+$ ]] && [[ ! $get_num1 =~ ^[0-9]+$ ]]
-then 
-    echo "please to numbers" 
-elif [[ ! $get_num =~ ^[0-9]+$ ]] && [[  $get_num1  =~ ^[0-9]+$ ]]
+if [ $# -eq 0 ]
 then
-    echo "enter one more number"
-elif [[  $get_num =~ ^[0-9]+$ ]] && [[ ! $get_num1 =~ ^[0-9]+$ ]]    
+    echo Enter two number
+elif [[ -z $2 ]]
 then
-    echo "enter one more number"
+    echo Enter second number
 else
-    echo $(($get_num1+$get_num))
+    echo $(($1+$2))
 fi
 #part 3
 sum=0
