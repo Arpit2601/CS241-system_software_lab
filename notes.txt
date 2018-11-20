@@ -290,3 +290,17 @@ trap "command to execute on receiving signal with number " (number of signal)
 # set -x was mentioned above and is certainly the most useful of all the debugging methods.
 
 # set -n might also be useful if you want to check your script for syntax errors.
+
+free -h		df -h		iostat top -bn
+
+tr command to translate
+
+convert ./"$f" ./"${f%.jpg}.pdf"
+convert $f -resize 25% $f
+pdftk Linux.Shell.Scripting.Cookbook.pdf cat $COUNTER-$COUNTER2 output $COUNT".pdf"
+
+paste -d, marks.csv -> marksheet.csv
+cut -d, -f1-3,7- marksheet.csv > marks.csv
+
+
+sed -i to make changes permanent in a file

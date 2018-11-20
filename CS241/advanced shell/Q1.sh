@@ -37,3 +37,5 @@ done
 #FOR cpu PART
 #iostat
 #mpstat
+#use free -h to get both memory
+#
