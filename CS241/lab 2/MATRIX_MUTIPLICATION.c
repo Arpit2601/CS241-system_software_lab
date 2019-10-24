@@ -75,7 +75,7 @@ main(void)
       }
 
   /* Compare the value of C and B. As A is the identity matrix, C and B must be equal
-   * after matrix multiplication.
+   * after matrix multiplication. Incorrect element will be printed
    */
   for (int i = 0; i < R; ++i)
     for (int j = 0; j < C; ++j)
